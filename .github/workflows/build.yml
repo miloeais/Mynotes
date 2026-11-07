@@ -125,7 +125,6 @@ jobs:
 
           import android.os.Bundle;
           import android.webkit.WebView;
-          import androidx.appcompat.app.AppCompatActivity;
           import androidx.webkit.WebViewAssetLoader;
           import androidx.webkit.WebViewClientCompat;
           import android.webkit.WebResourceRequest;
