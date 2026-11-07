@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="theme-color" content="#111318">
+
+    <title>My Notes</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <header class="app-header">
+            <div class="header-title">
+                <h1>My Notes</h1>
+                <p>Your personal notebook</p>
+            </div>
+
+            <div class="header-actions">
+                <button id="importBtn">Import</button>
+<input
+    type="file"
+    id="importFile"
+    accept=".txt,.md"
+    hidden
+>
+            </div>
+        </header>
+
+        <main id="mainContent">
+
+            <section class="notes-section">
+
+                <div class="section-header">
+                    <h2>ALL NOTES</h2>
+                    <span id="noteCount">0 NOTES</span>
+                </div>
+
+                <div id="notesGrid" class="notes-grid">
+                    <!-- Notes will appear here -->
+                </div>
+
+            </section>
+
+        </main>
+
+        <button id="addNoteBtn" class="add-note-btn">
+            +
+        </button>
+<!-- NOTE EDITOR POPUP -->
+
+<div id="editorPopup" class="editor-popup">
+
+    <div class="editor-header">
+        <button id="closeEditorBtn">✕</button>
+        <span id="editorStatus">New Note</span>
+        <button id="deleteNoteBtn">Delete</button>
+        <button id="saveNoteBtn">Save</button>
+        <button id="exportTxtBtn">Export TXT</button>
+        <button id="exportMdBtn">Export MD</button>
+    </div>
+
+    <div class="editor-layout">
+
+        <aside id="editorToolbar" class="editor-toolbar">
+
+            <button data-command="bold"><b>B</b></button>
+            <button data-command="italic"><i>I</i></button>
+            <button data-command="underline"><u>U</u></button>
+
+            <hr>
+
+            <button data-command="formatBlock" data-value="h1">H1</button>
+            <button data-command="formatBlock" data-value="h2">H2</button>
+            <button data-command="formatBlock" data-value="h3">H3</button>
+
+            <hr>
+
+            <button data-command="insertUnorderedList">• List</button>
+            <button data-command="insertOrderedList">1. List</button>
+            <button data-command="formatBlock" data-value="blockquote">Quote</button>
+
+            <button data-command="formatBlock" data-value="pre">Code</button>
+
+        </aside>
+
+        <div class="editor-content">
+
+            <input
+                type="text"
+                id="noteTitle"
+                placeholder="Note title..."
+            >
+
+            <div
+                id="noteContent"
+                contenteditable="true"
+                spellcheck="true"
+                data-placeholder="Start writing..."
+            ></div>
+
+        </div>
+
+    </div>
+
+    <button id="toggleToolbarBtn">☰</button>
+
+</div>
+
+
+    </div>
+
+    <script src="app.js"></script>
+
+</body>
+</html>
