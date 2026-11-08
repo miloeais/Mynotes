@@ -476,7 +476,7 @@ function importNote(file) {
    FUNCTION EXPORT
 ========================= */
 
-function exportNote(format) {
+async function exportNote(format) {
 
     if (currentNoteId === null) return;
 
@@ -494,22 +494,32 @@ function exportNote(format) {
         output = htmlToMarkdown(noteContent.innerHTML);
     }
 
+    const mimeType = format === "txt"
+        ? "text/plain"
+        : "text/markdown";
+
     const blob = new Blob([output], {
-        type: format === "txt"
-            ? "text/plain;charset=utf-8"
-            : "text/markdown;charset=utf-8"
+        type: mimeType
     });
 
-    const url = URL.createObjectURL(blob);
+    const reader = new FileReader();
 
-    const link = document.createElement("a");
+    reader.onload = function() {
 
-    link.href = url;
-    link.download = title + "." + format;
+        const base64 = reader.result.split(",")[1];
 
-    link.click();
+        if (window.MyNotes) {
+            window.MyNotes.saveFile(
+                title + "." + format,
+                mimeType,
+                base64
+            );
+        } else {
+            alert("Export is not supported.");
+        }
+    };
 
-    URL.revokeObjectURL(url);
+    reader.readAsDataURL(blob);
 }
 
 /* =========================
