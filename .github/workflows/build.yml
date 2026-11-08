@@ -242,9 +242,10 @@ jobs:
                 }
             },
             "MyNotes"
-       );
+            
+            );
 
-         WebViewAssetLoader assetLoader =
+            WebViewAssetLoader assetLoader =
             new WebViewAssetLoader.Builder()
                 .addPathHandler(
                     "/assets/",
@@ -252,7 +253,7 @@ jobs:
                 )
                 .build();
 
-        webView.setWebViewClient(new WebViewClientCompat() {
+            webView.setWebViewClient(new WebViewClientCompat() {
             @Override
             public WebResourceResponse shouldInterceptRequest(
                 WebView view,
@@ -262,9 +263,9 @@ jobs:
                     request.getUrl()
                 );
             }
-        });
+            });
 
-        webView.setWebChromeClient(new WebChromeClient() {
+            webView.setWebChromeClient(new WebChromeClient() {
             @Override
             public boolean onShowFileChooser(
                 WebView view,
@@ -291,22 +292,22 @@ jobs:
 
                 return true;
             }
-        });
+          });
 
-        webView.loadUrl(
+          webView.loadUrl(
             "https://appassets.androidplatform.net/assets/index.html"
-        );
-        }
+          );
+          }
 
-         @Override
-        protected void onActivityResult(
-        int requestCode,
-        int resultCode,
-        Intent data
-       ) {
-        super.onActivityResult(requestCode, resultCode, data);
+            @Override
+            protected void onActivityResult(
+            int requestCode,
+            int resultCode,
+            Intent data
+            ) {
+            super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == FILE_CHOOSER_REQUEST) {
+            if (requestCode == FILE_CHOOSER_REQUEST) {
 
             if (filePathCallback != null) {
 
@@ -332,9 +333,9 @@ jobs:
                 filePathCallback.onReceiveValue(results);
                 filePathCallback = null;
             }
-        }
+           }
 
-        if (requestCode == SAVE_FILE_REQUEST) {
+            if (requestCode == SAVE_FILE_REQUEST) {
 
             if (resultCode == Activity.RESULT_OK
                 && data != null
@@ -369,18 +370,18 @@ jobs:
 
             pendingFileData = null;
             pendingMimeType = null;
-        }
-       }
+          }
+          }
 
-        @Override
-        public void onBackPressed() {
-        if (webView.canGoBack()) {
+          @Override
+          public void onBackPressed() {
+          if (webView.canGoBack()) {
             webView.goBack();
-        } else {
+          } else {
             super.onBackPressed();
-        }
-       }
-       }
+          }
+          }
+          }
 
           EOF
 
