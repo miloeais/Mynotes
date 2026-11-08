@@ -1,6 +1,6 @@
 name: Build MyNotes APK
 
-on:
+"on":
   workflow_dispatch:
   push:
     branches: [main, master]
@@ -193,7 +193,7 @@ jobs:
           webView.getSettings().setDomStorageEnabled(true);
           webView.getSettings().setAllowFileAccess(true);
  
-           webView.addJavascriptInterface(
+          webView.addJavascriptInterface(
             new Object() {
                 @JavascriptInterface
                 public void saveFile(
